@@ -32,13 +32,33 @@ and open the template in the editor.
         <main>
             <div>
                 <section id="articulosprincipales">
-                    <article>
-                        <h1></h1>
-                        <p>Este es el texto de mi primer artículo</p>
-                        <figure>
-                            <img src="img/carretera.jpg" width="400">
-                        </figure>
-                    </article>
+                    <div id="titulo">
+                        <h1>¿A dónde quieres viajar?</h1>
+                    </div>
+                        <form name="miformulario" id="miformulario" method="get">
+                            <br/>
+                            <p>Dinos el origen de tu viaje:
+                                <select name="listaValores" id="listaValoresOrig" size="2" multiple="">
+                                <option value="Donostia">Donostia</option>
+                                <option value="Vitoria-Gasteiz">Vitoria</option>
+                                <option value="Bilbao">Bilbao</option>
+                            </select>
+                            </p>
+                               <br/>
+                <p>Dinos cual es el destino de tu viaje:
+                    <select name="listaValores" id="listaValoresDest" size="2" multiple="">
+                        <option value="Donostia">Donostia</option>
+                        <option value="Vitoria-Gasteiz">Vitoria</option>
+                        <option value="Bilbao">Bilbao</option>
+                    </select>
+                </p>
+                <br/>
+                <p>Fecha y hora local:<input type="datetime-local" name="tiempolocal" id="tiempolocal" />
+                    <input id="botonBuscar" type="button" value="Buscar"/>
+            </form>
+                <figure id="foto">
+                    <img src="img/cochemapa.jpg" width="300" height="200">
+                </figure>
                 </section>
             </div>  
         </main>
