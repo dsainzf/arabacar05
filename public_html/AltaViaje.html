@@ -10,6 +10,7 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <link rel="stylesheet" href="css/AltaViaje.css.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src ="js/altaViaje.js" type="text/javascript"></script>
     </head>
     <body>
         <header id="cabecera">
@@ -19,7 +20,7 @@ and open the template in the editor.
         </header>
         <main id="main">
         <section>
-            <form name="miformulario" id="miformulario" method="get">
+            <form name="miformulario" id="miformulario" onsubmit="guardarViaje(); return false; " method="post">
                 <br/>
                 <p>Dinos el origen de tu viaje:
                     <select name="listaValores" id="listaValoresOrig" size="2" multiple="">
@@ -39,8 +40,10 @@ and open the template in the editor.
                 <br/>
                 <p>Fecha y hora local:<input type="datetime-local" name="tiempolocal" id="tiempolocal" />
                 <p>Punto de recogida</p>
+                <input type ="submit" value="crear viaje">
             </form>
         </section>
         </main>
+        
     </body>
 </html>
