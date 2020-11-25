@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 var bd;
+//var boolean fechaOK;
 
 function mostrarerror(evento) {
   alert("Error: " + evento.code + " " + evento.message);
@@ -32,6 +33,7 @@ function guardarViaje() {
   var destino = document.getElementById("listaValoresDest").value;
   var fechayHora = document.getElementById("tiempolocal").value;
 
+
   var transaccion = bd.transaction(["viajes"], "readwrite");
   var almacen = transaccion.objectStore("viajes");
   transaccion.addEventListener("complete", completado);
@@ -40,7 +42,33 @@ function guardarViaje() {
   document.getElementById("listaValoresOrig").value = "";
   document.getElementById("listaValoresDest").value = "";
   document.getElementById("tiempolocal").value = "";
+  
 }
+  function comprobarFecha()
+{
+    var fechaActual = new date;
+    if(tiempolocal.value >= fechaActual.value)
+        {
+            alert("fecha introducida correcta");
+            return true;
+        }
+    else if(tiempolocal.value === fechaActual.value)
+        {
+            if(getTime().value < tiempolocal.getTime.value)
+            {
+                alert("hora correcta");
+                return true;
+            }
+            else
+            {
+                alert("no puedes crear un viaje con una hora anterior a la actual");
+            }
+        }
+    else
+        {
+            alert("no puedes crear un viaje con fecha anterior a la actual");
+        }
+}   
 function error(){
  alert ("error");
  }
