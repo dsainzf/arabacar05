@@ -46,7 +46,7 @@ function error(){
  }
 function completado(){
  alert ("completado");
- location.href = "AltaViaje.html";
+ location.href = "index.html";
 }
 
 window.addEventListener("load", iniciar);
