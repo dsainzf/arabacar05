@@ -17,7 +17,7 @@ function iniciar() {
     var solicitud = indexedDB.open("arabacar05");
     solicitud.addEventListener("error", mostrarerror);
     solicitud.addEventListener("success", comenzar);
-    solicitud.addEventListener("upgradeneeded", crearbd);
+    /*solicitud.addEventListener("upgradeneeded", crearbd);*/
 }
 function guardarBusqueda() {
     var origen =document.getElementById("listaValoresOrig").value;
