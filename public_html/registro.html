@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Registrate y viaja con ArabaCar:</title>
+        <meta charset="UTF-8">
+         <link rel="stylesheet" href="css/Registro.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header id="cabecera">
+            <div>
+            <h1>Registrate y viaja con ArabaCar:</h1>
+            </div>
+        </header>
+        <section>
+            <form name="formularioRegistro" id="formularioRegistro" method="get" action="procesar.php">
+                <p>Nombre:* <input type="text" name="nombre" id="nombre" placeholder="Ingresa tu Nombre y Apellido" required />
+                <p>DNI:* <input type="text" name="dni" id="dni" placeholder="Ingresa tu dni con letra" required pattern="[0-9]{8}[A-Za-z]{1}" />  
+                <p>Edad:* <input type="number" name="edad" id="edad" placeholder="Ingresa tu edad" required pattern ="[18-100]" />
+                <p>Email:* <input type="email" name="email" id="email" placeholder="Ingresa tu email" required"" />
+                <p>Contraseña:* <input type="password" name="contraseña" id="contraseña" placeholder="Crea una contraseña" required />
+                <p>Foto:* 
+                <p>Marca y Modelo del coche: <input type="text" name="coche" id="coche" placeholder="Ingresa los datos de tu coche" />
+                <p><i>*campos obligatorios </i></p>
+
+                <p><input type="button" id="boton" value="Registrarse" onclick="location.href ='indexLogeado.html'"/> 
+                
+        </section>
+      
+    </body>
+</html>

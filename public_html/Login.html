@@ -14,14 +14,18 @@ and open the template in the editor.
     <body>
         <header id="cabecera">
             <div>
-            <h1>Identificate:</h1>
+            <h1>Iniciar Sesión:</h1>
             </div>
         </header>
         <section>
-            <form name="miformulario" id="miformulario" method="get" action="procesar.php">
-                <p>Email:<input type="email" name="miemail" id="miemail" required="" />
-                <p>Contraseña:<input type="password" name="contrasaeña" id="contraseña" />
-                <p><input type="submit" id="boton" value="Aceptar"/>    
+            <form name="formularioLogin" id="formularioLogin" method="get" action="procesar.php">
+                <p>Email:<input type="email" name="miemail" id="miemail" placeholder="Ingresa tu email" required"" />
+                <p>Contraseña:<input type="password" name="contraseña" id="contraseña" placeholder="Ingresa tu contraseña" required/>
+                <p><input type="button" id="boton" value="Entrar" onclick="location.href ='indexLogeado.html'"/>    
+                <h3>¿Aun no te has registrado?</h3>
+                <p>Registrate para poder iniciar sesión</p>
+                <p><input  type="button" id="boton2" onclick="location.href ='registro.html'" value=" Registrarse"/>
+                          
             </form>
         </section>
     </body>
