@@ -39,7 +39,7 @@ and open the template in the editor.
                         <form name="miformulario" id="miformulario" method="get">
                             <br/>
                             <p>Dinos el origen de tu viaje:
-                                <select name="listaValores" id="listaValoresOrig" size="2" multiple="" required="">
+                                <select name="listaValores" id="listaValoresOrig" size="2" multiple="" required="required">
                                 <option value="Donostia">Donostia</option>
                                 <option value="Vitoria-Gasteiz">Vitoria</option>
                                 <option value="Bilbao">Bilbao</option>
@@ -47,14 +47,14 @@ and open the template in the editor.
                             </p>
                                <br/>
                 <p>Dinos cual es el destino de tu viaje:
-                    <select name="listaValores" id="listaValoresDest" size="2" multiple="" required="">
+                    <select name="listaValores" id="listaValoresDest" size="2" multiple="" required="required">
                         <option value="Donostia">Donostia</option>
                         <option value="Vitoria-Gasteiz">Vitoria</option>
                         <option value="Bilbao">Bilbao</option>
                     </select>
                 </p>
                 <br/>
-                <p>Fecha y hora local:<input type="datetime-local" name="tiempolocal" id="tiempolocal" required="" />
+                <p>Fecha y hora local:<input type="datetime-local" name="tiempolocal" id="tiempolocal" min="2020-11-27T13:17" required="required" />
                     <input id="botonBuscar" type="button" value="Buscar"  />
             </form>
                 <figure id="foto">

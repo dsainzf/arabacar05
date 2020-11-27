@@ -29,6 +29,8 @@ function iniciar() {
     solicitud.addEventListener("upgradeneeded", crearbd);
     var boton = document.getElementById("botonCrear");
     boton.addEventListener("click", guardarViaje);
+    var d = new Date();
+    $("#tiempolocal").attr("min",d.getFullYear() + "-" + ((d.getMonth())+1) + "-" + d.getDate() + "T00:00:00");
     
 }
 function guardarViaje() {
@@ -48,7 +50,7 @@ function guardarViaje() {
   document.getElementById("tiempolocal").value = "";
   
 }
-  function comprobarFecha()
+ /* function comprobarFecha()
 {
     var fechaActual = new date;
     if(tiempolocal.value >= fechaActual.value)
@@ -72,7 +74,7 @@ function guardarViaje() {
         {
             alert("no puedes crear un viaje con fecha anterior a la actual");
         }
-}   
+}  */ 
 function error(){
  alert ("error");
  }
