@@ -27,6 +27,9 @@ function iniciar() {
     solicitud.addEventListener("error", mostrarerror);
     solicitud.addEventListener("success", comenzar);
     solicitud.addEventListener("upgradeneeded", crearbd);
+    var boton = document.getElementById("botonCrear");
+    boton.addEventListener("click", guardarViaje);
+    
 }
 function guardarViaje() {
   var origen = document.getElementById("listaValoresOrig").value;
@@ -39,6 +42,7 @@ function guardarViaje() {
   transaccion.addEventListener("complete", completado);
   transaccion.addEventListener("error", error);
   var solicitud = almacen.add({listaValoresOrig: origen, listaValoresDest: destino, tiempolocal: fechayHora});
+  localStorage.setItem(origen + "-" + destino, fechayHora);
   document.getElementById("listaValoresOrig").value = "";
   document.getElementById("listaValoresDest").value = "";
   document.getElementById("tiempolocal").value = "";
