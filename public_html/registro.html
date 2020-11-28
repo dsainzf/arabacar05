@@ -10,6 +10,7 @@ and open the template in the editor.
         <meta charset="UTF-8">
          <link rel="stylesheet" href="css/Registro.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <script src ="js/registro.js" type="text/javascript"></script>
     </head>
     <body>
         <header id="cabecera">
@@ -20,15 +21,23 @@ and open the template in the editor.
         <section>
             <form name="formularioRegistro" id="formularioRegistro" method="get" action="procesar.php">
                 <p>Nombre:* <input type="text" name="nombre" id="nombre" placeholder="Ingresa tu Nombre y Apellido" required />
+                    <br>
                 <p>DNI:* <input type="text" name="dni" id="dni" placeholder="Ingresa tu dni con letra" required pattern="[0-9]{8}[A-Za-z]{1}" />  
-                <p>Edad:* <input type="number" name="edad" id="edad" placeholder="Ingresa tu edad" required pattern ="[18-100]" />
+                    <br>
+                <p>Edad:* <input type="number" name="edad" id="edad" placeholder="Ingresa tu edad" required  />
+                    <br>
                 <p>Email:* <input type="email" name="email" id="email" placeholder="Ingresa tu email" required=""/>
+                    <br>
                 <p>Contraseña:* <input type="password" name="contraseña" id="contraseña" placeholder="Crea una contraseña" required />
+                    <br>
                 <p>Foto:* 
+                    <br>
                 <p>Marca y Modelo del coche: <input type="text" name="coche" id="coche" placeholder="Ingresa los datos de tu coche" />
+                    <br>
                 <p><i>*campos obligatorios </i></p>
-
-                <p><input type="button" id="boton" value="Registrarse" onclick="location.href ='indexLogeado.html'"/> 
+                <br/>
+                 <!-- redirigir al index<form method="get" action="location.href ='index.html'">-->
+                <p><input type="submit" id="boton" value="Registrarse" /> 
                 
         </section>
       

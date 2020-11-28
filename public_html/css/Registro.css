@@ -7,4 +7,80 @@ and open the template in the editor.
     Created on : 26 nov. 2020, 18:07:49
     Author     : maria
 */
+*{
+    margin: 0px;
+    padding: 0px;
+}
+#cabecera {
+    width: 96%;
+    height: 150px;
+    padding: 0% 2%;
+    background-color: #6075ec;
+}
+#cabecera > div {
+    width: 960px;
+    margin: 0px auto;
+    padding-top: 45px;
+}
+#cabecera h1 {
+    font: bold 54px Arial, sans-serif;
+    color: #FFFFFF;
+}
+
+*{box-sizing:border-box;}
+
+#formularioRegistro{
+        text-align: center;
+	width:400px;
+	padding:16px;
+	border-radius:10px;
+	margin:auto;
+	background-color:#8592d6;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="email"],
+form input[type="password"]{
+	width:200px;
+	padding:3px 10px;
+	border:1px solid #f6f6f6;
+	border-radius:3px;
+        line-height : 25px;
+
+
+#form input[type="submit"]{
+	width:100%;
+	padding:8px 16px;
+	margin-top:32px;
+	border:1px solid #000;
+	border-radius:5px;
+	display:block;
+	color:#fff;
+	background-color:#000;
+        line-height : 25px;
+} 
+
+#form input[type="submit"]:hover{
+	cursor:pointer;	background-color:#f6f6f6;
+	margin:8px 0;
+	display:inline-block;
+}
+
+#form input[type="submit"]{
+	width:100%;
+	padding:8px 16px;
+	margin-top:32px;
+	border:1px solid #000;
+	border-radius:5px;
+	display:block;
+	color:#fff;
+	background-color:#000;
+} 
+
+#form input[type="submit"]:hover{
+	cursor:pointer;
+}
+
+}
 
