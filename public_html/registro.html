@@ -19,7 +19,7 @@ and open the template in the editor.
             </div>
         </header>
         <section>
-            <form name="formularioRegistro" id="formularioRegistro" method="get" action="procesar.php">
+            <form name="formularioRegistro" id="formularioRegistro" onsubmit="guardarUsuario(); return false; " method="post">
                 <p>Nombre:* <input type="text" name="nombre" id="nombre" placeholder="Ingresa tu Nombre y Apellido" required />
                     <br>
                 <p>DNI:* <input type="text" name="dni" id="dni" placeholder="Ingresa tu dni con letra" required pattern="[0-9]{8}[A-Za-z]{1}" />  
@@ -30,7 +30,8 @@ and open the template in the editor.
                     <br>
                 <p>Contraseña:* <input type="password" name="contraseña" id="contraseña" placeholder="Crea una contraseña" required />
                     <br>
-                <p>Foto:* 
+                <p>Foto:*  <input type="file" name="foto" id="foto" required />
+                    <img id="imgPreview" src="" alt="Preview" />
                     <br>
                 <p>Marca y Modelo del coche: <input type="text" name="coche" id="coche" placeholder="Ingresa los datos de tu coche" />
                     <br>
@@ -40,6 +41,6 @@ and open the template in the editor.
                 <p><input type="submit" id="boton" value="Registrarse" /> 
                 
         </section>
-      
+        
     </body>
 </html>
