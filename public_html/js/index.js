@@ -19,6 +19,15 @@ function iniciar() {
     solicitud.addEventListener("success", comenzar);
     solicitud.addEventListener("upgradeneeded", crearbd);
     
+    if(document.getElementById("usuario")===null)
+    {
+        
+    }
+    else
+    {
+        sesionStorage();
+    }
+    
     var usuario = JSON.parse(sesionStorage.getItem("usuario"));
     if (usuario === null){
         $("#altaViaje").remove();
@@ -35,9 +44,41 @@ function iniciar() {
 }
 
 function sesionStorage(){
+  if (sessionStorage.length === 0)
+    {
+        if (localStorage.length === 0)
+        {
+            document.getElementById("usuario").innerHTML = "";
+        } else
+        {
+            var datos = window.localStorage[ window.localStorage.length - 1];
+
+            datos = JSON.parse(datos);
+
+            document.getElementById("usuario").innerHTML = 'Hola, ' + datos[0];
+        }
+    } 
+    else
+    {
+        //el sesionStorage esta vacio, asi que cogemos datos
+        //del localStorage del ultimo usuario que ha entrado
+        var datos = window.sessionStorage[window.sessionStorage.length - 1];
+
+        datos = JSON.parse(datos);   
+
+        alert("usuaaariiiioooo");
+
+        var usuario = datos[0];
+        document.getElementById("usuario").innerHTML = 'Hola, ' + usuario;
+        
+        if(document.title  === "buscarViajes")
+        {
+            return usuario;
+        }
+
+    }
+}  
     
-    
-}
 function crearbd(evento) {
     var basededatos = evento.target.result;
     var usuarios = basededatos.createObjectStore("usuarios", {keyPath: "dni"});
