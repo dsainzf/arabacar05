@@ -124,7 +124,13 @@ function guardarUsuario() {
  
 function completado(){
  alert ("completado");
- location.href = "index.html";
+ /*location.href = "index.html";*/
+ var coche = document.getElementById("coche").value;
+    if(coche === null){
+        location.href ="pasajero.html";
+    }else{
+        location.href="conductor.html";
+    }
 }
 
 }

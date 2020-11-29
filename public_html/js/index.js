@@ -19,28 +19,28 @@ function iniciar() {
     solicitud.addEventListener("success", comenzar);
     solicitud.addEventListener("upgradeneeded", crearbd);
     
+    var boton = document.getElementById("cerrarSesion");
+    boton.addEventListener("click", cerrarSesion);
+    
+   var usuario = JSON.parse(sesionStorage.getItem("usuario"));
+   
     if(document.getElementById("usuario")===null)
     {
-        
+        $("#AltaViaje").remove();
+        $("#verViajesPublicados").remove();
+        $("#cerrarSesion").remove();
     }
     else
     {
+        //$("#registro.html").remove();
+        $("#Login").remove();
         sesionStorage();
-    }
-    
-    var usuario = JSON.parse(sesionStorage.getItem("usuario"));
-    if (usuario === null){
-        $("#altaViaje").remove();
-        $("#verViajesPublicados").remove();
-        $("#cerrarSesion").remove();
-    }else{
-        $("#registro").remove();
-        $("#login").remove();
         
-        if(usuario.marca === "")
-            $("#altaViaje").remove();
+        if(usuario.coche === "")
+            $("#AltaViaje").remove();
             $("#verViajesPublicados").remove();
-    }
+    } 
+    
 }
 
 function sesionStorage(){
@@ -93,6 +93,12 @@ function error(){
 function completado(){
  alert ("completado");
  location.href = "index.html";
+}
+function cerrarSesion()
+{
+    alert("cierra sesion");
+    sessionStorage.clear();
+    localStorage.clear();
 }
 
 window.addEventListener("load", iniciar);

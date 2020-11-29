@@ -52,7 +52,20 @@ function error(){
  }
 function completado(){
  alert ("completado");
- location.href = "index.html";
+ /*location.href = "index.html";*/
+ var encontrado = false;
+        var i = 0;
+        while( i < elementos.length && !encontrado )
+        {   
+            if ( elementos[i].email === emailABuscar )
+            {
+                var coche= elementos[i].coche
+                if(coche === null){
+                    location.href = "pasajero.html";
+                }else{
+                     location.href="conductor.html";
+                }
+            }
 }
 function comprobacionLogin()
 {
@@ -177,6 +190,6 @@ function sesionStorage()
         }
 
     }
+    }
 }
-
 window.addEventListener("load", iniciar);
