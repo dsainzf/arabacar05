@@ -5,13 +5,7 @@
  */
 
 var bd;
-function mostrarerror(evento) {
-  alert("Error: " + evento.code + " " + evento.message);
-}
-function comenzar(evento) {
-  bd = evento.target.result;
-  mostrar();
-}
+
 
 function iniciar() {
     var solicitud = indexedDB.open("arabaCar05");
@@ -19,7 +13,28 @@ function iniciar() {
     solicitud.addEventListener("success", comenzar);
     solicitud.addEventListener("upgradeneeded", crearbd);
     
+    var boton = document.getElementById("cerrarSesion");
+    boton.addEventListener("click", cerrarSesion);
+    
+   var usuario = JSON.parse(sesionStorage.getItem("usuario"));
+   
     if(document.getElementById("usuario")===null)
+    {
+        $("#AltaViaje").remove();
+        $("#verViajesPublicados").remove();
+        $("#cerrarSesion").remove();
+    }
+    else
+    {
+        //$("#registro.html").remove();
+        $("#Login").remove();
+        sesionStorage();
+        
+        if(usuario.coche === "")
+            $("#AltaViaje").remove();
+            $("#verViajesPublicados").remove();
+    } 
+   if(document.getElementById("usuario")===null)
     {
         
     }
@@ -28,7 +43,7 @@ function iniciar() {
         sesionStorage();
     }
     
-    var usuario = JSON.parse(sesionStorage.getItem("usuario"));
+    /*var usuario = JSON.parse(sesionStorage.getItem("usuario"));
     if (usuario === null){
         $("#altaViaje").remove();
         $("#verViajesPublicados").remove();
@@ -40,7 +55,7 @@ function iniciar() {
         if(usuario.marca === "")
             $("#altaViaje").remove();
             $("#verViajesPublicados").remove();
-    }
+    }*/
 }
 
 function sesionStorage(){
@@ -94,5 +109,19 @@ function completado(){
  alert ("completado");
  location.href = "index.html";
 }
+function mostrarerror(evento) {
+  alert("Error: " + evento.code + " " + evento.message);
+}
+function comenzar(evento) {
+  bd = evento.target.result;
+  mostrar();
+}
+function cerrarSesion()
+{
+    alert("cierra sesion");
+    sessionStorage.clear();
+    localStorage.clear();
+}
+
 
 window.addEventListener("load", iniciar);
