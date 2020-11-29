@@ -46,10 +46,10 @@ function mostrarlista(evento)
 {
   var puntero = evento.target.result;
   var fechaActual = document.getElementById("tiempolocal").value;
-  var usuario = JSON.parse(sessionStorage.getItem("usuario"));
-  var dni = usuario.dni
+  //var usuario = JSON.parse(sessionStorage.getItem("usuario"));
+  //var dni = usuario.dni
   if (puntero) {
-      if( fechaActual < puntero.value.tiempolocal && puntero.value.dni === dni)
+      if( fechaActual < puntero.value.tiempolocal /*&& puntero.value.dni === dni*/)
       {
            cajadatos.innerHTML += "<div>" + puntero.value.listaValoresOrig + " - " + puntero.value.listaValoresDest + " - " + puntero.value.tiempolocal + "</div>";
             

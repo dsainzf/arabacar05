@@ -11,7 +11,7 @@ function mostrarerror(evento) {
 }
 function comenzar(evento) {
   bd = evento.target.result;
-  mostrar();
+ // mostrar();
 }
 
 function crearbd(evento) {
@@ -50,31 +50,22 @@ function guardarViaje() {
   document.getElementById("tiempolocal").value = "";
   
 }
- /* function comprobarFecha()
+ function compararOrigenYDestino()
 {
-    var fechaActual = new date;
-    if(tiempolocal.value >= fechaActual.value)
+    var origen = document.getElementById("listaValoresOrig");
+    var dest = document.getElementById("listaValoresDest");
+    if(origen.value === dest.value)
         {
-            alert("fecha introducida correcta");
-            return true;
-        }
-    else if(tiempolocal.value === fechaActual.value)
-        {
-            if(getTime().value < tiempolocal.getTime.value)
-            {
-                alert("hora correcta");
-                return true;
-            }
-            else
-            {
-                alert("no puedes crear un viaje con una hora anterior a la actual");
-            }
+            alert("origen y destino iguales");
+            return false;
         }
     else
         {
-            alert("no puedes crear un viaje con fecha anterior a la actual");
+            return true;
         }
-}  */ 
+} 
+
+
 function error(){
  alert ("error");
  }

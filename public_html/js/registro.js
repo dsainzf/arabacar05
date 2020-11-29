@@ -79,8 +79,6 @@ function guardarUsuario() {
  alert ("error");
  }
  
- 
- 
 function completado(){
  alert ("completado");
  location.href = "index.html";
@@ -175,5 +173,10 @@ function comprobarNombre(pNombre)
         nombre.style.background = '#FFDDDD';
         return false;
     }
+}
+
+function comprobarCoche(pCoche){
+    
+    
 }
 window.addEventListener("load", iniciar);
