@@ -19,14 +19,14 @@ function iniciar() {
     solicitud.addEventListener("success", comenzar);
     solicitud.addEventListener("upgradeneeded", crearbd);
     
-     if(document.getElementById("usuario")===null)
+    if(document.getElementById("usuario")===null)
     {
         
     }
     else
     {
         sesionStorage();
-    }
+    } 
     
     email = document.getElementById("email");
     email.addEventListener("input", comprobacionLogin);
