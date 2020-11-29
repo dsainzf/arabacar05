@@ -7,15 +7,69 @@ and open the template in the editor.
     Created on : 26-nov-2020, 22:51:53
     Author     : imano
 */
+* {
+    margin: 0px;
+    padding: 0px;
+    background-color: #0F76A0;
 
+}
+#cabeceralogo {
+    width: 96%;
+    height: 85px;
+    padding: 0% 2%;
+    background-color: #0F76A0;
+    color: white;
+}
+#cabeceralogo > div {
+    width: 960px;
+    margin: 0px;
+    padding-top: 30px;
+    
+}
 #cajadatos {
     float: left;
     width: 400px;
     margin-left: 20px;
     padding: 20px;
     border: 1px solid #999999;
+    background-color: white;
+    color: black;
 }
 #cajadatos > div {
     padding: 5px;
     border-bottom: 1px solid #999999;
+}
+#miformulario {
+    font: bold 20px Arial, sans-serif;
+    width: 620px;
+    padding-top: 30px;
+    border-radius: 10px;
+    float: right;
+    color: white;
+}
+#botonBuscar {
+    align-content:  space-around;
+    position: relative;
+    box-sizing: border-box;
+    display: inline-flex;
+    padding: 0px 24px;
+    border: 1px solid transparent;
+    border-radius: 48px;
+    font-size: 16px;
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    font: bold 25px Arial, sans-serif;
+    height: 48px;
+    min-width: 48px;
+    max-width: 100%;
+    overflow: hidden;
+    /*user-select: none;*/
+    -webkit-box-align: center;
+    align-items: center;
+    transition: max-width 500ms ease-in 0s, background-color 200ms ease-in 0s;
+    white-space: nowrap;
+    background-color: #0F76A0;
+    color: rgb(255, 255, 255);
 }

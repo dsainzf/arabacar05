@@ -44,7 +44,7 @@ function guardarViaje() {
   transaccion.addEventListener("complete", completado);
   transaccion.addEventListener("error", error);
   var solicitud = almacen.add({listaValoresOrig: origen, listaValoresDest: destino, tiempolocal: fechayHora});
-  localStorage.setItem(origen + "-" + destino, fechayHora);
+  //localStorage.setItem(origen + "-" + destino, fechayHora);
   document.getElementById("listaValoresOrig").value = "";
   document.getElementById("listaValoresDest").value = "";
   document.getElementById("tiempolocal").value = "";

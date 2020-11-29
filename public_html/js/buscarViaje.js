@@ -9,9 +9,9 @@
 /*var formulario;*/
 function iniciar() {
     var boton = document.getElementById("botonBuscar");
-    boton.addEventListener("click", nuevoitem);
-    formulario = document.querySelector("form[name='miformulario']");
-    formulario.addEventListener("invalid", validacion, true);
+    //boton.addEventListener("click", nuevoitem);
+    //formulario = document.querySelector("form[name='miformulario']");
+   // formulario.addEventListener("invalid", validacion, true);
     boton.addEventListener("click", completado);
     var d = new Date();
     $("#tiempolocal").attr("min",d.getFullYear() + "-" + ((d.getMonth())+1) + "-" + d.getDate() + "T00:00:00");
@@ -26,7 +26,7 @@ function validacion(evento) {
         formulario.submit();
     }
 }*/
-function nuevoitem() {
+/*function nuevoitem() {
     var origen = document.getElementById("listaValoresOrig").value;
     var destino = document.getElementById("listaValoresDest").value;
     var fechayhora = document.getElementById("tiempolocal").value;
@@ -34,10 +34,10 @@ function nuevoitem() {
     document.getElementById("listaValoresOrig").value = "";
     document.getElementById("listaValoresDest").value = "";
     document.getElementById("tiempolocal").value = "";
-}
+}*/
 
 function completado(){
- alert ("completado");
+ //alert ("completado");
  location.href = "ViajesBuscados.html";
 }
 window.addEventListener("load", iniciar);

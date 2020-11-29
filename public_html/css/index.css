@@ -120,7 +120,7 @@ main > div {
 
 #titulo:hover {
     transform: rotate(5deg);
-}
+} 
 #botonBuscar {
     align-content:  space-around;
     position: relative;
@@ -146,4 +146,5 @@ main > div {
     white-space: nowrap;
     background-color: #0F76A0;
     color: rgb(255, 255, 255);
+    float: right;
 }

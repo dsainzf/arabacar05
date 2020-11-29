@@ -10,12 +10,41 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/ViajesBuscados.css">
-        <script src ="js/ViajesBuscados.js" type="text/javascript"></script>
+        <script src ="js/ViajesBuscados2.js" type="text/javascript"></script>
     </head>
     <body>
-        <h1>Viajes disponibles para ti.</h1>
+        <header id="cabeceralogo">
+            <div>
+                <h1>Viajes disponibles para ti:</h1>
+            </div>
+        </header>
+        <br/>
+        <main> 
         <section id="cajadatos">
-            <p>Información no disponible</p>
+            <p>Aquí apareceran los viajes que haya disponibles</p>
         </section>
+            <form name="miformulario" id="miformulario" method="get">
+                            <br/>
+                            <p>Dinos el origen de tu viaje:
+                                <select name="listaValores" id="listaValoresOrig" size="2" multiple="" required="required">
+                                <option value="Donostia">Donostia</option>
+                                <option value="Vitoria-Gasteiz">Vitoria</option>
+                                <option value="Bilbao">Bilbao</option>
+                            </select>
+                            </p>
+                               <br/>
+                <p>Dinos cual es el destino de tu viaje:
+                    <select name="listaValores" id="listaValoresDest" size="2" multiple="" required="required">
+                        <option value="Donostia">Donostia</option>
+                        <option value="Vitoria-Gasteiz">Vitoria</option>
+                        <option value="Bilbao">Bilbao</option>
+                    </select>
+                </p>
+                <br/>
+                <p>Fecha y hora local:<input type="datetime-local" name="tiempolocal" id="tiempolocal" min="2020-11-28T13:17" required="required" />
+                    <input id="botonBuscar" type="button" value="Buscar"  />
+            </form>
+        </main>
+        
     </body>
 </html>
