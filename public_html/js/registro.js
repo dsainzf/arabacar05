@@ -47,9 +47,52 @@ function iniciar() {
 
     //var archivos = document.getElementById("imagen");
     //archivos.addEventListener("change", procesar);
-
+ if(document.getElementById("usuario")===null)
+    {
+        
+    }
+    else
+    {
+        sesionStorage();
+    }
     var boton = document.getElementById("botonRegistrarse");
     boton.addEventListener("click", guardarUsuario);
+}
+
+function sesionStorage(){
+  if (sessionStorage.length === 0)
+    {
+        if (localStorage.length === 0)
+        {
+            document.getElementById("usuario").innerHTML = "";
+        } else
+        {
+            var datos = window.localStorage[ window.localStorage.length - 1];
+
+            datos = JSON.parse(datos);
+
+            document.getElementById("usuario").innerHTML = 'Hola, ' + datos[0];
+        }
+    } 
+    else
+    {
+        //el sesionStorage esta vacio, asi que cogemos datos
+        //del localStorage del ultimo usuario que ha entrado
+        var datos = window.sessionStorage[window.sessionStorage.length - 1];
+
+        datos = JSON.parse(datos);   
+
+        alert("usuaaariiiioooo");
+
+        var usuario = datos[0];
+        document.getElementById("usuario").innerHTML = 'Hola, ' + usuario;
+        
+        if(document.title  === "buscarViajes")
+        {
+            return usuario;
+        }
+
+    }
 }
 function guardarUsuario() {
   var nombre = document.getElementById("nombre").value;
