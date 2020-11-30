@@ -41,9 +41,19 @@ function guardarViaje() {
 
   var transaccion = bd.transaction(["viajes"], "readwrite");
   var almacen = transaccion.objectStore("viajes");
-  transaccion.addEventListener("complete", completado);
-  transaccion.addEventListener("error", error);
-  var solicitud = almacen.add({listaValoresOrig: origen, listaValoresDest: destino, tiempolocal: fechayHora});
+ 
+  if(document.getElementById("listaValoresOrig").value === document.getElementById("listaValoresDest").value)
+        {
+            alert("origen y destino iguales");
+            
+        }
+    else
+        {
+            var solicitud = almacen.add({listaValoresOrig: origen, listaValoresDest: destino, tiempolocal: fechayHora});
+             transaccion.addEventListener("complete", completado);
+             transaccion.addEventListener("error", error);
+        }
+    
   //localStorage.setItem(origen + "-" + destino, fechayHora);
   document.getElementById("listaValoresOrig").value = "";
   document.getElementById("listaValoresDest").value = "";
@@ -54,7 +64,7 @@ function guardarViaje() {
 {
     var origen = document.getElementById("listaValoresOrig");
     var dest = document.getElementById("listaValoresDest");
-    if(origen.value === dest.value)
+    if(origen.value === destino.value)
         {
             alert("origen y destino iguales");
             return false;
