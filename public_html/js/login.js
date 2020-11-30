@@ -53,7 +53,15 @@ function error(){
 function completado(){
  alert ("completado");
  /*location.href = "index.html";*/
- var encontrado = false;
+        
+}
+function comprobacionLogin()
+{
+    comprobarEmail(email.value);
+    
+    comprobarContraseña(contraseña.value);
+    
+    var encontrado = false;
         var i = 0;
         while( i < elementos.length && !encontrado )
         {   
@@ -66,12 +74,8 @@ function completado(){
                      location.href="conductor.html";
                 }
             }
-}
-function comprobacionLogin()
-{
-    comprobarEmail(email.value);
-    
-    comprobarContraseña(contraseña.value);
+            i++;
+        }
     
 }
 function validarUsuario()
@@ -190,6 +194,34 @@ function sesionStorage()
         }
 
     }
+}
+function comprobarEmail(pEmail)
+{
+    var ex = /^([a-zA-Z]+[a-zA-Z0-9._-]*)@{1}([a-zA-Z0-9\.]{2,})\.([a-zA-Z]{2,3})$/;
+   
+    if (ex.test(pEmail) || pEmail === '')
+    {
+        email.style.background = '#FFFFFF';
+        return true;
+    } else
+    {
+        email.style.background = '#FFDDDD';
+        return false;
+    }
+}
+
+function comprobarContraseña(pContraseña)
+{
+    var er = /^[a-zA-Z0-9]{4,16}$/;
+    
+    if (er.test(pContraseña) || pContraseña === '')
+    {
+        contraseña.style.background = '#FFFFFF';
+        return true;
+    } else
+    {
+        contraseña.style.background = '#FFDDDD';
+        return false;
     }
 }
 window.addEventListener("load", iniciar);

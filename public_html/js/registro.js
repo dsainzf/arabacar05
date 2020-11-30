@@ -128,7 +128,7 @@ function completado(){
  var coche = document.getElementById("coche").value;
     if(coche === null){
         location.href ="pasajero.html";
-    }else{
+    }else if(coche !== null){
         location.href="conductor.html";
     }
 }
