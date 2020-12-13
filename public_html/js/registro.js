@@ -4,20 +4,7 @@
  * and open the template in the editor.
  */
 var bd;
-function mostrarerror(evento) {
-  alert("Error: " + evento.code + " " + evento.message);
-}
-function comenzar(evento) {
-  bd = evento.target.result;
-  mostrar();
-}
-function crearbd(evento) {
-    var basededatos = evento.target.result;
-    var usuarios = basededatos.createObjectStore("usuarios", {keyPath: "dni"});
-    usuarios.createIndex("BuscarEmail", "email", {unique:true});
-    var viajes = basededatos.createObjectStore("viajes", {keyPath: "id", autoIncrement:true});
-    viajes.createIndex("fechaHora", "fechaHora", {unique:true});
-}
+
 
 function iniciar() {
     var solicitud = indexedDB.open("arabaCar05");
@@ -47,93 +34,63 @@ function iniciar() {
 
     //var archivos = document.getElementById("imagen");
     //archivos.addEventListener("change", procesar);
- if(document.getElementById("usuario")===null)
-    {
-        
-    }
-    else
-    {
-        sesionStorage();
-    }
     var boton = document.getElementById("botonRegistrarse");
     boton.addEventListener("click", guardarUsuario);
+    
+    var boton = document.getElementById("botonRegistrarse");
+    boton.addEventListener("click", completado);
 }
 
-function sesionStorage(){
-  if (sessionStorage.length === 0)
-    {
-        if (localStorage.length === 0)
-        {
-            document.getElementById("usuario").innerHTML = "";
-        } else
-        {
-            var datos = window.localStorage[ window.localStorage.length - 1];
-
-            datos = JSON.parse(datos);
-
-            document.getElementById("usuario").innerHTML = 'Hola, ' + datos[0];
-        }
-    } 
-    else
-    {
-        //el sesionStorage esta vacio, asi que cogemos datos
-        //del localStorage del ultimo usuario que ha entrado
-        var datos = window.sessionStorage[window.sessionStorage.length - 1];
-
-        datos = JSON.parse(datos);   
-
-        alert("usuaaariiiioooo");
-
-        var usuario = datos[0];
-        document.getElementById("usuario").innerHTML = 'Hola, ' + usuario;
-        
-        if(document.title  === "buscarViajes")
-        {
-            return usuario;
-        }
-
-    }
+function mostrarerror(evento) {
+  alert("Error: " + evento.code + " " + evento.message);
 }
+function comenzar(evento) {
+  bd = evento.target.result;
+  //mostrar();
+}
+function crearbd(evento) {
+    var basededatos = evento.target.result;
+    var usuarios = basededatos.createObjectStore("usuarios", {keyPath: "dni"});
+    usuarios.createIndex("BuscarEmail", "email", {unique:true});
+    var viajes = basededatos.createObjectStore("viajes", {keyPath: "id", autoIncrement:true});
+    viajes.createIndex("fechaHora", "fechaHora", {unique:true});
+}
+
+
 function guardarUsuario() {
-  var nombre = document.getElementById("nombre").value;
-  var dni = document.getElementById("dni").value;
-  var edad = document.getElementById("edad").value;
-  var email = document.getElementById("email").value;
-  var contraseña = document.getElementById("contraseña").value;
-  var foto = document.getElementById("foto").value;
-  var coche = document.getElementById("coche").value;
+    
+    alert ("agregar clientes");
+        var transaccion = bd.transaction(["usuarios"], "readwrite");
+        var almacen = transaccion.objectStore("usuarios");
+       
+         var nombre = document.getElementById("nombre").value;
+         var dni = document.getElementById("dni").value;
+         var edad = document.getElementById("edad").value;
+         var email = document.getElementById("email").value;
+         var contraseña = document.getElementById("contraseña").value;
+         var foto = String(document.getElementById("foto").value);
+         var coche = document.getElementById("coche").value;
+ 
+         solicitud = almacen.add({nombre: nombre, dni: dni, edad: edad, email: email, contraseña: contraseña, foto: foto, coche: coche});
+        var registrado = new Array(); 
+        registrado = JSON.stringify(nombre + '-' + dni + '-' + edad + '-' + email + '-' + contraseña + '-' + foto + '-' + coche );
+        sessionStorage.setItem('usuario', JSON.parse(registrado));
+         
+         alert("Se ha insertado correctamente"); 
+                
+     
+    }
   
-
-  var transaccion = bd.transaction(["usuarios"], "readwrite");
-  var almacen = transaccion.objectStore("usuarios");
-  transaccion.addEventListener("complete", completado);
-  transaccion.addEventListener("error", error);
-  var solicitud = almacen.add({nombre: nombre, dni: dni, edad: edad, email: email, contraseña: contraseña, coche: coche});
-  localStorage.setItem(nombre + "-" + dni+ "-" + edad+ "-" + email+ "-" + contraseña + "-" + foto + "-" + coche);
-  document.getElementById("nombre").value = "";
-  document.getElementById("dni").value = "";
-  document.getElementById("edad").value = "";
-  document.getElementById("email").value = "";
-  document.getElementById("contraseña").value = "";
-  document.getElementById("foto").value = "";
-  document.getElementById("coche").value = "";
   
  function error(){
  alert ("error");
  }
  
-function completado(){
- alert ("completado");
- /*location.href = "index.html";*/
- var coche = document.getElementById("coche").value;
-    if(coche === null){
-        location.href ="pasajero.html";
-    }else if(coche !== null){
-        location.href="conductor.html";
-    }
-}
+ function completado(){
+     alert ("completado");
+     location.href = "index.html";
+ }
 
-}
 function comprobacionRegistro()
 {
     comprobarNombre(nombre.value);
@@ -144,7 +101,7 @@ function comprobacionRegistro()
     comprobarContraseña(coche.value);
     
     if(comprobarNombre(nombre.value)&& comprobarDNI(dni.value) && comprobarMovil(edad.value) && comprobarEmail(email.value)
-            && comprobarContraseña(contraseña.value) && comprobarContraseña(coche.value) === true)
+            && comprobarContraseña(contraseña.value) && comprobarCoche(coche.value) === true)
     {
         return true;
     }   
@@ -165,11 +122,11 @@ function comprobarEmail(pEmail)
     }
 }
 
-function comprobarContraseña(pContraseña)
+function comprobarContraseña(contraseña)
 {
     var er = /^[a-zA-Z0-9]{4,16}$/;
     
-    if (er.test(pContraseña) || pContraseña === '')
+    if (er.test(contraseña) || contraseña === '')
     {
         contraseña.style.background = '#FFFFFF';
         return true;
@@ -180,25 +137,27 @@ function comprobarContraseña(pContraseña)
     }
 }
 
-function comprobarEdad(pEdad)
+function comprobarEdad(edad)
 {
-    
-    if (pEdad > 18)
+   // var pEdad = document.getElementById("edad").value;
+    if (edad > 18)
     {
-        pEdad.document.write("edad correcta");
+        //pEdad.document.write("edad correcta");
+        alert("edad correcta");
         return true;
     } else
     {
-        pEdad.document.write("edad inferiro a 18");
+       // pEdad.document.write("edad inferiro a 18");
+         alert("edad inferiro a 18");
         return false;
     }
 }
 
-function comprobarDNI(pDNI)
+function comprobarDNI(dni)
 {
     var er = /^[0-9]{8}$/;
     
-    if (er.test(pDNI) || pDNI === '')
+    if (er.test(dni) || dni === '')
     {
         dni.style.background = '#FFFFFF';
         return true;
@@ -209,11 +168,11 @@ function comprobarDNI(pDNI)
     }
 }
 
-function comprobarNombre(pNombre)
+function comprobarNombre(nombre)
 {
     var er = /^[a-zA-Z]{3,12}$/;
     
-    if (er.test(pNombre) || pNombre === '')
+    if (er.test(nombre) || nombre === '')
     {
         nombre.style.background = '#FFFFFF';
         return true;
@@ -224,8 +183,31 @@ function comprobarNombre(pNombre)
     }
 }
 
-function comprobarCoche(pCoche){
+function comprobarCoche(coche){
+     var er = /^[a-zA-Z]{3,12}$/;
     
+    if (er.test(coche) || coche === '')
+    {
+        nombre.style.background = '#FFFFFF';
+        return true;
+    } else
+    {
+        nombre.style.background = '#FFDDDD';
+        return false;
+    }
+    
+}
+
+function procesar(evento) {
+    
+    cajadatos.innerHTML = "";
+    var archivos = evento.target.files;
+    var archivo = archivos[0];
+    var lector = new FileReader();
+    lector.addEventListener("load", function (evento) {
+        mostrar(evento, archivo);
+    });
+    lector.readAsBinaryString(archivo);
     
 }
 window.addEventListener("load", iniciar);

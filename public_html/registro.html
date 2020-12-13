@@ -24,13 +24,13 @@ and open the template in the editor.
                     <br>
                 <p>DNI:* <input type="text" name="dni" id="dni" placeholder="Ingresa tu dni con letra" required pattern="[0-9]{8}[A-Za-z]{1}" />  
                     <br>
-                <p>Edad:* <input type="number" name="edad" id="edad" placeholder="Ingresa tu edad" required  />
+                <p>Edad:* <input type="number" name="edad" id="edad" placeholder="Ingresa tu edad" min="18" required="required"  />
                     <br>
-                <p>Email:* <input type="email" name="email" id="email" placeholder="Ingresa tu email" required=""/>
+                <p>Email:* <input type="email" name="email" id="email" placeholder="Ingresa tu email" required="required"/>
                     <br>
-                <p>Contraseña:* <input type="password" name="contraseña" id="contraseña" placeholder="Crea una contraseña" required />
+                <p>Contraseña:* <input type="password" name="contraseña" id="contraseña" placeholder="Crea una contraseña" required="required" />
                     <br>
-                <p>Foto:*  <input type="file" name="foto" id="foto" required />
+                <p>Foto:*  <input type="file" name="foto" id="foto" required="required" />
                     <img id="imgPreview" src="" alt="Preview" />
                     <br>
                 <p>Marca y Modelo del coche: <input type="text" name="coche" id="coche" placeholder="Ingresa los datos de tu coche" />

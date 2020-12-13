@@ -14,7 +14,7 @@ function iniciar() {
    // formulario.addEventListener("invalid", validacion, true);
     boton.addEventListener("click", completado);
     var d = new Date();
-    $("#tiempolocal").attr("min",d.getFullYear() + "-" + ((d.getMonth())+1) + "-" + d.getDate() + "T00:00:00");
+    $("#tiempolocal").attr(d.getFullYear() + "-" + ((d.getMonth())+1) + "-" + d.getDate() + "T00:00:00");
 }
 function validacion(evento) {
     var elemento = evento.target;
