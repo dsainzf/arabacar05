@@ -5,28 +5,13 @@
  */
 
 var bd;
-function mostrarerror(evento) {
-  alert("Error: " + evento.code + " " + evento.message);
-}
-function comenzar(evento) {
-  bd = evento.target.result;
-  mostrar();
-}
+
 
 function iniciar() {
     var solicitud = indexedDB.open("arabaCar05");
     solicitud.addEventListener("error", mostrarerror);
     solicitud.addEventListener("success", comenzar);
-    solicitud.addEventListener("upgradeneeded", crearbd);
-    
-    if(document.getElementById("usuario")===null)
-    {
-        
-    }
-    else
-    {
-        sesionStorage();
-    } 
+    solicitud.addEventListener("upgradeneeded", crearbd); 
     
     email = document.getElementById("email");
     email.addEventListener("input", comprobacionLogin);
@@ -37,7 +22,17 @@ function iniciar() {
     var boton = document.getElementById("login");
     boton.addEventListener("click", validarUsuario);
     
+    var boton = document.getElementById("login");
+    boton.addEventListener("click", completado);
     
+    
+}
+function mostrarerror(evento) {
+  alert("Error: " + evento.code + " " + evento.message);
+}
+function comenzar(evento) {
+  bd = evento.target.result;
+  //mostrar();
 }
 function crearbd(evento) {
     var basededatos = evento.target.result;
@@ -47,42 +42,18 @@ function crearbd(evento) {
     viajes.createIndex("fechaHora", "fechaHora", {unique:true});
 }
 
-function error(){
- alert ("error");
- }
-function completado(){
- alert ("completado");
- /*location.href = "index.html";*/
-        
-}
+
 function comprobacionLogin()
 {
     comprobarEmail(email.value);
     
     comprobarContraseña(contraseña.value);
-    
-    var encontrado = false;
-        var i = 0;
-        while( i < elementos.length && !encontrado )
-        {   
-            if ( elementos[i].email === emailABuscar )
-            {
-                var coche= elementos[i].coche
-                if(coche === null){
-                    location.href = "pasajero.html";
-                }else{
-                     location.href="conductor.html";
-                }
-            }
-            i++;
-        }
-    
-}
+ }
+ 
 function validarUsuario()
 {
     var emailABuscar = document.getElementById("email").value;
     var passwordABuscar = document.getElementById("contraseña").value;
-    //var passwordABuscar = md5( document.getElementById("contraseña").value );
    
    //----------- CONECTAR A LA BD ----------------   
     var transaccion = bd.transaction(["arabaCar05"],"readonly");
@@ -111,7 +82,6 @@ function validarUsuario()
                 alert( "Contraseña verificada");
                 encontrado = true;
                 
-//                var usuario = document.getElementById("nick").value;
                 var clave = elementos[i].email;
                 var contraseña = elementos[i].contraseña;
                 
@@ -132,7 +102,7 @@ function validarUsuario()
                
                 var usuario = elementos[i].nombre;
                 
-                //alert("usuaaariiiioooo");
+                alert("usuaaariiiioooo");
                 
                 document.getElementById("usuario").innerHTML = 'Hola, ' + usuario;
                 
@@ -157,43 +127,6 @@ function validarUsuario()
             alert("El email no esta en la BD");
         
     };
-}
-function sesionStorage()
-{
-    //--------------Session storage----------------------------
-    if (sessionStorage.length === 0)
-    {
-        if (localStorage.length === 0)
-        {
-            document.getElementById("usuario").innerHTML = "";
-        } else
-        {
-            var datos = window.localStorage[ window.localStorage.length - 1];
-
-            datos = JSON.parse(datos);
-
-            document.getElementById("usuario").innerHTML = 'Hola, ' + datos[0];
-        }
-    } 
-    else
-    {
-        //el sesionStorage esta vacio, asi que cogemos datos
-        //del localStorage del ultimo usuario que ha entrado
-        var datos = window.sessionStorage[window.sessionStorage.length - 1];
-
-        datos = JSON.parse(datos);   
-
-        alert("usuaaariiiioooo");
-
-        var usuario = datos[0];
-        document.getElementById("usuario").innerHTML = 'Hola, ' + usuario;
-        
-        if(document.title  === "ConsultarReserva")
-        {
-            return usuario;
-        }
-
-    }
 }
 function comprobarEmail(pEmail)
 {
@@ -223,5 +156,14 @@ function comprobarContraseña(pContraseña)
         contraseña.style.background = '#FFDDDD';
         return false;
     }
+}
+
+function error(){
+ alert ("error");
+ }
+function completado(){
+ alert ("completado");
+ location.href = "index.html";
+        
 }
 window.addEventListener("load", iniciar);
